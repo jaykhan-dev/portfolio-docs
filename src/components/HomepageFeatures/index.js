@@ -8,29 +8,21 @@ const FeatureList = [
     Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Using JavaScript libraries and frameworks like React, Vue, GSAP, Axios,
+        Three JS etc.
       </>
     ),
   },
   {
     title: "UI/UX designer",
     Svg: require("@site/static/img/undraw_docusaurus_tree.svg").default,
-    description: (
-      <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
-      </>
-    ),
+    description: <>A good user experience depends on empathy and simplicity.</>,
   },
   {
     title: "Bitcoin Advocate",
     Svg: require("@site/static/img/undraw_docusaurus_react.svg").default,
     description: (
-      <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
-      </>
+      <>Bitcoin is a means of self-sovereignty, freedom, and innovation.</>
     ),
   },
 ];

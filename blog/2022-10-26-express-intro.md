@@ -1,5 +1,5 @@
 ---
-title: "Express Intro"
+title: Express Intro
 tags: [express, javascript, node]
 ---
 

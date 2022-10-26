@@ -62,7 +62,7 @@ Mobile wallets will be the main medium of interacting and transacting with the B
 The following wallets use the Lightning Network:
 
 - [Phoenix](https://phoenix.acinq.co/)
-- [Munn](https://muun.com/)
+- [Muun](https://muun.com/)
 - [Strike](https://strike.me/en/)
 - [Blue Wallet](https://bluewallet.io/)
 - [Zeus](https://zeusln.app/)
