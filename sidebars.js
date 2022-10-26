@@ -19,15 +19,28 @@ const sidebars = {
   // But you can create a sidebar manually
 
   Sidebar: [
+    "resume",
     {
       type: "category",
       label: "Web Dev",
-      items: ["web-dev/appreci"],
+      items: [
+        "web-dev/shaybeas",
+        "web-dev/appreci",
+        "web-dev/pitbull-community",
+        "web-dev/scribendi",
+        "web-dev/budgetmore",
+      ],
     },
     {
       type: "category",
       label: "Graphics",
-      items: ["graphics/logos"],
+      items: [
+        "graphics/logos",
+        "graphics/posters",
+        "graphics/marketing",
+        "graphics/motion-graphics",
+        "graphics/social-media",
+      ],
     },
     "tech-stack",
     "design-philosophy",
