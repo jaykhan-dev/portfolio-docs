@@ -84,6 +84,8 @@ Understanding how you are building the project for is fundamental to design.
 
 #### User persona template
 
+![User persona template](./img/persona-map-template.jpg)
+
 ### 3. Ideate and Collaborate
 
 The stage where a lot of the design thinking happens.
@@ -97,6 +99,8 @@ The stage where a lot of the design thinking happens.
 - **Define the elements of your user flow.** Use differen shapes to represent the action. A fully rounded button is a starting and ending point. A diamond is where a decision needs to be made. A rectangle is a stage of the flow and arrows indicate the flow of the task.
 
 - **Refine your outline.** The same principles you apply when designing an interface can and should be applied when designing a UX flowchart.
+
+![User flow example](./img/user-flow-example.png)
 
 #### Wireframes
 
