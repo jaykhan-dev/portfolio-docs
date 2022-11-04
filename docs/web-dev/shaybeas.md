@@ -4,6 +4,8 @@ title: ShayBeas Enterprises
 
 # ShayBeas Enterprises
 
+[React Remake](https://shaybeas.netlify.app):
+
 ![Shaybeas website](./img/shaybeas/shaybeas-hero.png)
 
 [See design](https://shaybeas.webflow.io)

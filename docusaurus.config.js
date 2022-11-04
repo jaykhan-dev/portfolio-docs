@@ -79,7 +79,7 @@ const config = {
       footer: {
         style: "dark",
         links: [],
-        copyright: `Jay Khan. ${new Date().getFullYear()}.`,
+        copyright: `jaykhan.sound@gmail.com | ${new Date().getFullYear()}.`,
       },
       prism: {
         theme: lightCodeTheme,

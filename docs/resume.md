@@ -1,15 +1,5 @@
 # Resume
 
-## Lighthouse Labs
-
-### Graphics and Web Designer
-
-_Full-time | Remote | August 2022 - Present_
-
-Website:
-
--
-
 ## Freelancer
 
 ### Web design/development
@@ -19,6 +9,16 @@ _Freelance | Ottawa, ON | May 2021 - Present_
 - Creating wireframes, prototypes, user flows, based on UX research
 - Creating content such as blogs, graphics, social media posts, and landing pages
 - Helped clients improve the e-commerce UX by modernizing the designs
+
+## Lighthouse Labs
+
+### Graphics and Web Designer
+
+Temporary | Remote | August 2022 - October 2022
+
+- Designed digital assets using Adobe CC for advertisements, social media, email campaigns
+- Designed webpages using Figma
+- Provided graphic design support so manage workload
 
 ## Keywords Studios
 

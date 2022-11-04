@@ -14,7 +14,7 @@ const FeatureList = [
     ),
   },
   {
-    title: "UI/UX designer",
+    title: "Graphic designer",
     Svg: require("@site/static/img/undraw_docusaurus_tree.svg").default,
     description: <>A good user experience depends on empathy and simplicity.</>,
   },
