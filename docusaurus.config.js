@@ -54,7 +54,7 @@ const config = {
         title: "Jay Khan",
         logo: {
           alt: "Jay Khan logo",
-          src: "img/jk-logo.png",
+          src: "img/jk-logo-blue.svg",
         },
         items: [
           {

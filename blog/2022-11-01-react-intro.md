@@ -2,17 +2,16 @@
 title: React Intro
 slug: react-intro
 tags: [javascript, react, tailwind, api, html, css, node, npm]
+authors: jay
 ---
 
-## What is React?
+![Intro to React Header](./img/react-intro/header.png)
 
 React JS is a JavaScript library for creating User Interfaces. It was created at Facebook and is very popular as most jobs for frontend development require knowledge of [React](https://reactjs.org).
 
 This blog will briefly go through all the major and must know concepts for using React. Mastering the basics will give you a solid foundation on which to build well made user interfaces that a joy to use.
 
 <!-- truncate -->
-
-![Intro to React Header](./img/react-intro/header.png)
 
 ### Virtual DOM
 

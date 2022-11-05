@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 const FeatureList = [
   {
     title: "Frontend Developer",
-    Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
+    Svg: require("../../../static/img/frontend-icon.svg").default,
     description: (
       <>
         Using JavaScript libraries and frameworks like React, Vue, GSAP, Axios,
@@ -15,12 +15,12 @@ const FeatureList = [
   },
   {
     title: "Graphic designer",
-    Svg: require("@site/static/img/undraw_docusaurus_tree.svg").default,
-    description: <>A good user experience depends on empathy and simplicity.</>,
+    Svg: require("../../../static/img/graphic-design-icon.svg").default,
+    description: <>Creative design work for digital asset creation</>,
   },
   {
     title: "Bitcoin Advocate",
-    Svg: require("@site/static/img/undraw_docusaurus_react.svg").default,
+    Svg: require("../../../static/img/bitcoin-btc-logo.svg").default,
     description: (
       <>Bitcoin is a means of self-sovereignty, freedom, and innovation.</>
     ),
