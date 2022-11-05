@@ -4,6 +4,24 @@
  * work well for content-centric websites.
  */
 
+@import url("https://fonts.googleapis.com/css2?family=Eagle+Lake&family=Questrial&display=swap");
+
+/*
+font-family: 'Eagle Lake', cursive;
+font-family: 'Questrial', sans-serif;
+ */
+
+.title {
+  font-family: "Eagle Lake", cursive;
+}
+
+h1,
+h2,
+h3,
+p {
+  font-family: "Questrial", sans-serif;
+}
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #109df5;
@@ -27,4 +45,11 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+#header-id {
+  background-image: url("../../static/img/mountain-landscape.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }

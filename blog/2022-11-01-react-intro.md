@@ -883,6 +883,62 @@ export default ThreeScene;
 
 Linting and formatting code is important to weed out any bugs beforehand that may arise from writing the wrong code.
 
+With `npm`
+
+```bash
+npm install -D eslint prettier eslint-config-prettier
+npx eslint --init
+```
+
+With `yarn`
+
+```bash
+yarn add -D eslint prettier eslint-config-prettier
+yarn eslint --init
+```
+
+There will a series of questions that will ask you about your project setup such as if it's using JavaScript or Typescript.
+
+After you have answered the questions, do the following to start using the ESLint and prettier in your project:
+
+Create a `.eslintrc.*` file and add the following code:
+
+```js
+{
+  "extends": [
+    "..some-other-config-you-use",
+    "prettier"
+  ]
+}
+```
+
+Create a `.prettierrc.json` file and add the following code:
+
+```js
+{
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "arrowParens": "avoid",
+  "endOfLine": "lf"
+}
+```
+
+VS Code `json` settings.
+
+:::tip
+to open the settings file use Cmd + Shift + P for MacOS
+:::
+
+Type `Preferences:Open Settings (JSON)` and add the following lines:
+
+```js
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
+```
+
 ### Netlify script
 
 ```toml

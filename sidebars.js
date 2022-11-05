@@ -19,6 +19,7 @@ const sidebars = {
   // But you can create a sidebar manually
 
   Sidebar: [
+    "tech-stack",
     "resume",
     {
       type: "category",
@@ -42,7 +43,6 @@ const sidebars = {
         "graphics/social-media",
       ],
     },
-    "tech-stack",
     "design-philosophy",
     "content-strategy",
   ],

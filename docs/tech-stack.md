@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # Tech Stack
 
+The following list highlights the main frameworks/libraries and software that I use to design and build websites and apps. My focus is strictly in Frontend Development and digital asset creation.
+
 | Category        | Software                                                                            | Description                                                  |
 | --------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------ |
 | Development     | [React](https://reactjs.org), [Vue](https://vuejs.org)                              | Frontend JavaScript frameworks for creating user interfaces. |

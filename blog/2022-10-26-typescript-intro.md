@@ -4,6 +4,34 @@ slug: typsescript-intro
 tags: [typescript, javascript, superset]
 ---
 
-# What is Typescript?
+### Simple Types
 
-## Why use it?
+### Special Types
+
+### Arrays
+
+### Tuples
+
+### Object Types
+
+### Enums
+
+### Aliases & Interfaces
+
+### Union Types
+
+### Functions
+
+### Casting
+
+### Classes
+
+### Basic Generics
+
+### Utility Types
+
+### Keyof
+
+### Null
+
+### Definitely Typed

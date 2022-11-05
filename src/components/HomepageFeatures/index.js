@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 const FeatureList = [
   {
     title: "Frontend Developer",
-    Svg: require("../../../static/img/frontend-icon.svg").default,
+    Svg: require("../../../static/img/frontend-blue.svg").default,
     description: (
       <>
         Using JavaScript libraries and frameworks like React, Vue, GSAP, Axios,
@@ -15,12 +15,12 @@ const FeatureList = [
   },
   {
     title: "Graphic designer",
-    Svg: require("../../../static/img/graphic-design-icon.svg").default,
+    Svg: require("../../../static/img/gd-blue.svg").default,
     description: <>Creative design work for digital asset creation</>,
   },
   {
     title: "Bitcoin Advocate",
-    Svg: require("../../../static/img/bitcoin-btc-logo.svg").default,
+    Svg: require("../../../static/img/bitcoin-blue.svg").default,
     description: (
       <>Bitcoin is a means of self-sovereignty, freedom, and innovation.</>
     ),
@@ -43,8 +43,8 @@ function Feature({ Svg, title, description }) {
 
 export default function HomepageFeatures() {
   return (
-    <section className={styles.features}>
-      <div className="container">
+    <section id="HomepageFeatures-bg" className={styles.features}>
+      <div className="container" id="features-filter">
         <div className="row">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
