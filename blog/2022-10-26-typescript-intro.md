@@ -2,6 +2,7 @@
 title: Typescript Intro
 slug: typsescript-intro
 tags: [typescript, javascript, superset]
+authors: jay
 ---
 
 ![Typescript Intro Header](./img/typescript-intro/ts-wallpaper-mountains.png)

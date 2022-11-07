@@ -14,4 +14,4 @@ The following list highlights the main frameworks/libraries and software that I 
 | Version Control | [Git](https://git-scm.com/), [Github](https://github.com/)                          | Industry standard. Great for collaboration and teams         |
 | Containers      | [Docker](https://www.docker.com/)                                                   | Basic setup of containers for cross-platform development     |
 | Cloud           | [AWS](https://aws.amazon.com/?nc2=h_lg)                                             | S3 buckets, Heroku                                           |
-| CMS             | [WordPress](https://wordpress.org)                                                  | Oxygen Builder                                               |
+| CMS             | [WordPress](https://wordpress.org)                                                  | I use the Oxygen Builder to create designs from scratch      |
