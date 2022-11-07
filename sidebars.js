@@ -25,8 +25,8 @@ const sidebars = {
       type: "category",
       label: "Web Dev",
       items: [
-        "web-dev/shaybeas",
         "web-dev/appreci",
+        "web-dev/shaybeas",
         "web-dev/pitbull-community",
         "web-dev/scribendi",
         "web-dev/budgetmore",

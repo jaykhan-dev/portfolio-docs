@@ -23,13 +23,13 @@ authors: jay
 
 React JS is a JavaScript library for creating User Interfaces. It was created at Facebook and is very popular as most jobs for frontend development require knowledge of [React](https://reactjs.org).
 
-This blog will briefly go through all the major and must know concepts for using React. Mastering the basics will give you a solid foundation on which to build well made user interfaces that a joy to use.
+This blog will briefly go through all the major and must know concepts for using React. Mastering the basics will give you a solid foundation on which to build well made user interfaces that are a joy to use.
 
 <!-- truncate -->
 
 ### Virtual DOM
 
-React works by creating a virtual DOM in memory which is then manipulated. These changes in state are then rendered onto the page.
+React works by creating a virtual DOM in memory which can then be manipulated. These changes in state are then rendered onto the page.
 
 ### CDN
 
@@ -790,7 +790,13 @@ module.exports = {
 npm run dev
 ```
 
-### GSAP
+### Animation
+
+#### GSAP
+
+[GSAP](https://greensock.com/gsap/) allows you to create very sophisticated animations that will make any webpage come to life.
+
+The following code is like a loading animation where 4 circles are osicallating between 2 points.
 
 ```jsx
 import React, { useRef, useEffect } from "react";
@@ -862,7 +868,19 @@ function App() {
 export default App;
 ```
 
-### Three JS
+### 3D
+
+#### Three JS
+
+[Three JS](https://threejs.org) is a popular JavaScript library that allows you to create 3D graphics.
+
+First install it with:
+
+```bash
+npm i three
+```
+
+The following code will create a cube and rotate it. There is no interaction since most of the features are not enabled but this is a good start to adding 3D objects into any React app.
 
 ```jsx
 /* eslint-disable space-before-function-paren */
@@ -924,6 +942,34 @@ class ThreeScene extends Component {
 }
 export default ThreeScene;
 ```
+
+#### Spline
+
+[Spline](https://spline.design/) is a very cool browser based 3D app that makes it much easier to make scenes and add interactivity. This will really spice up your React app!
+
+Install the plugin with:
+
+```bash
+npm install @splinetool/react-spline @splinetool/runtime
+```
+
+Next under "Export", select "Code" and "React" and find the code for the component that looks like this:
+
+```jsx
+import Spline from "@splinetool/react-spline";
+
+export default function App() {
+  return (
+    <div>
+      <Spline scene="your-url-for-the-3d-scene" />
+    </div>
+  );
+}
+```
+
+To test it out I used a template and changed the text to "Khan", and the result looks like this:
+
+![Spline React](../blog/img/react-intro/spline-react.png)
 
 ### ESLint and Prettier
 
@@ -1008,7 +1054,13 @@ Type `Preferences:Open Settings (JSON)` and add the following lines:
 }
 ```
 
-### Netlify script
+### Deployment
+
+#### Netlify
+
+[Netlify](https://www.netlify.com/) is a platform where you can deploy your React apps without paying a cent! There are different plans that cater to different needs but for our work, this is sufficient.
+
+In order to go to any page without having to first load the home page, create a file called `netlify.toml` and add the following code:
 
 ```toml
 # The following redirect is intended for use with most SPA's that handles routing internally.
@@ -1073,4 +1125,96 @@ export default function App() {
 
 ### Testing
 
+[Jest](https://jestjs.io/) is a testing framework that comes with the `create-react-app` setup. It is simple to use and allows you to test the components to see if they are working properly.
+
+First create a `__tests__` folder in `src` and create a file called `app.js`
+
+The following code is testing our Mock API (built with Mirage JS).
+
+#### Initialize
+
+```js
+let server;
+
+beforeEach(() => {
+  server = makeServer("test");
+});
+
+afterEach(() => {
+  server.shutdown();
+});
+```
+
+#### Test 1
+
+```js
+test("it shows a message when there are no reminders", async () => {
+  visit("/");
+  await waitForElementToBeRemoved(() => screen.getByText("Loading..."));
+
+  expect(screen.getByText("All done!")).toBeInTheDocument();
+});
+
+test("it shows existing reminders", async () => {
+  server.create("reminder", { text: "Walk the dog" });
+  server.create("reminder", { text: "Take out the trash" });
+  server.create("reminder", { text: "Work out" });
+
+  visit("/");
+  await waitForElementToBeRemoved(() => screen.getByText("Loading..."));
+
+  expect(screen.getByText("Walk the dog")).toBeInTheDocument();
+  expect(screen.getByText("Take out the trash")).toBeInTheDocument();
+  expect(screen.getByText("Work out")).toBeInTheDocument();
+});
+```
+
+#### Test 2
+
+```js
+test("it can add a reminder to a list", async () => {
+  let list = server.create("list");
+
+  visit(`/${list.id}?open`);
+  await waitForElementToBeRemoved(() => screen.getByText("Loading..."));
+
+  userEvent.click(screen.getByTestId("add-reminder"));
+  await userEvent.type(screen.getByTestId("new-reminder-text"), "Work out");
+  userEvent.click(screen.getByTestId("save-new-reminder"));
+
+  await waitForElementToBeRemoved(() =>
+    screen.getByTestId("new-reminder-text")
+  );
+
+  expect(screen.getByText("Work out")).toBeInTheDocument();
+  expect(server.db.reminders.length).toEqual(1);
+  expect(server.db.reminders[0].listId).toEqual(list.id);
+});
+```
+
 ### Accessibility
+
+Accessibility is important to help those who need assistance accessing a web page. Besides the legal requirements depending on the jurisdiction, making an app accessible requires hard-coding some attributes so that screen readers can navigate and perform actions.
+
+The important attributes to know are `aria-label`, and `aria-required`. These help assistive technology to determine what this HTML element is and how to use it.
+
+```html
+<input
+  type="text"
+  aria-label="{labelText}"
+  aria-required="true"
+  onChange="{onchangeHandler}"
+  value="{inputValue}"
+  name="name"
+/>
+```
+
+#### Guidelines:
+
+1. [WCAG 2](https://www.w3.org/WAI/standards-guidelines/wcag/)
+1. [WAI ARIA](https://www.w3.org/TR/wai-aria-1.2/)
+
+#### Plugins:
+
+1. [ESLint Plugin JSX](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y)
+2. [Axe Core](https://github.com/dequelabs/axe-core)

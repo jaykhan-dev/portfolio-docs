@@ -6,6 +6,10 @@ tags: [social media, design, graphics]
 
 # Social Media
 
+## Lighthouse Labs
+
+[Lighthouse Labs](https://www.lighthouselabs.com)
+
 ## Rampart
 
 #### About the company
@@ -52,7 +56,3 @@ The design behind this involved using a lot of red colors, with the Parliament b
 This piece is for the American audience
 
 ![Rampart social media](./img/social-media/rampart-4july.png)
-
-### Fathers day sale of various items
-
-![Rampart social media](./img/social-media/rampart-fathers-day.png)
