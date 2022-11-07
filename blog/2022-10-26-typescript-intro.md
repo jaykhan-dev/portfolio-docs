@@ -4,6 +4,10 @@ slug: typsescript-intro
 tags: [typescript, javascript, superset]
 ---
 
+![Typescript Intro Header](./img/typescript-intro/ts-wallpaper-mountains.png)
+
+<!-- truncate -->
+
 ### Simple Types
 
 ### Special Types

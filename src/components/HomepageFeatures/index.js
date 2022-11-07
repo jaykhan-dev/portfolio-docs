@@ -16,13 +16,15 @@ const FeatureList = [
   {
     title: "Graphic designer",
     Svg: require("../../../static/img/gd-blue.svg").default,
-    description: <>Creative design work for digital asset creation</>,
+    description: (
+      <>For marketing, design, digital assets, visual storytelling etc.</>
+    ),
   },
   {
     title: "Bitcoin Advocate",
     Svg: require("../../../static/img/bitcoin-blue.svg").default,
     description: (
-      <>Bitcoin is a means of self-sovereignty, freedom, and innovation.</>
+      <>Building apps and e-comm stores using the Bitcoin Lightning Network.</>
     ),
   },
 ];

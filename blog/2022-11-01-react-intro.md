@@ -5,7 +5,7 @@ tags: [javascript, react, tailwind, api, html, css, node, npm]
 authors: jay
 ---
 
-![Intro to React Header](./img/react-intro/header.png)
+![Intro to React Header](../blog/img/react-intro/moutains-react.jpeg)
 
 React JS is a JavaScript library for creating User Interfaces. It was created at Facebook and is very popular as most jobs for frontend development require knowledge of [React](https://reactjs.org).
 
@@ -816,6 +816,38 @@ const Loader = () => {
 export default Loader;
 ```
 
+This code snippet is using `useRef` and `rotation` attribute to spin a box with "Hello" written on it when the page loads.
+
+```js
+import { useLayoutEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+
+function App() {
+  const app = useRef();
+
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.to(".box", { rotation: "+=360" });
+    }, app);
+
+    return () => ctx.revert();
+  });
+
+  return (
+    <div
+      ref={app}
+      className="App h-screen grid place-items-center bg-violet-100"
+    >
+      <div className="box w-24 h-24 rounded shadow-2xl grid place-items-center bg-black text-white">
+        Hello
+      </div>
+    </div>
+  );
+}
+
+export default App;
+```
+
 ### Three JS
 
 ```jsx
@@ -906,7 +938,6 @@ Create a `.eslintrc.*` file and add the following code:
 ```js
 {
   "extends": [
-    "..some-other-config-you-use",
     "prettier"
   ]
 }
@@ -916,11 +947,35 @@ Create a `.prettierrc.json` file and add the following code:
 
 ```js
 {
-  "semi": true,
+  "semi": false,
   "singleQuote": true,
-  "trailingComma": "es5",
-  "arrowParens": "avoid",
-  "endOfLine": "lf"
+  "trailingComma": "none",
+  "arrowParens": "always",
+  "endOfLine": "lf",
+  "space-before-function-paren": false
+}
+```
+
+Create a `.eslintrc.json` file and put the following code inside it:
+
+```js
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["plugin:react/recommended", "standard"],
+  "overrides": [],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {
+    "space-before-function-paren": ["error", "never"],
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }] //should add ".ts" if typescript project
+  }
 }
 ```
 
@@ -969,6 +1024,38 @@ export default LottieAnim;
 ```
 
 ### Mock API
+
+using [Mirage JS](https://miragejs.com/) to mock APIs is a way for frontend developers to create prototypes that feel close to the real thing. It helps to understand how the project is structured.
+
+```jsx
+import React, { useState, useEffect } from "react";
+import { createServer } from "miragejs";
+
+let server = createServer();
+server.get("/api/users", { users: [{ id: 1, name: "Jay" }] });
+
+export default function App() {
+  let [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/users")
+      .then((res) => res.json())
+      .then((json) => {
+        setUsers(json.users);
+      });
+  }, []);
+
+  return (
+    <div>
+      {users.map((user) => (
+        <p key={user.id} className="text-4xl">
+          {user.name}
+        </p>
+      ))}
+    </div>
+  );
+}
+```
 
 ### Testing
 
