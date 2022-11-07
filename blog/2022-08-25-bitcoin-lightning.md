@@ -5,11 +5,13 @@ authors: jay
 tags: [bitcoin, lightning, layer-2]
 ---
 
-# Lightning Network
-
-The Lightning Network is a layer 2 implementation on top of the Bitcoin blockchain to help it scale. Without this solution, Bitcoin could never really become a world currency since billions of people have mobile phones and the potential to connect to the internet.
+![Bitcoin mountain wallpaper](../blog/img/bitcoin/blog-imgs_bitcoin.png)
 
 <!-- truncate -->
+
+## Lightning Network
+
+The Lightning Network is a layer 2 implementation on top of the Bitcoin blockchain to help it scale. Without this solution, Bitcoin could never really become a world currency since billions of people have mobile phones and the potential to connect to the internet.
 
 From the [whitepaper](https://lightning.network/lightning-network-paper.pdf)
 

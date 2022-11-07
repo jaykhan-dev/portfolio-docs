@@ -1,11 +1,25 @@
 ---
 title: React Intro
 slug: react-intro
-tags: [javascript, react, tailwind, api, html, css, node, npm]
+tags:
+  [
+    javascript,
+    react,
+    tailwind,
+    api,
+    html,
+    css,
+    node,
+    npm,
+    yarn,
+    eslint,
+    prettier,
+    gsap,
+  ]
 authors: jay
 ---
 
-![Intro to React Header](../blog/img/react-intro/moutains-react.jpeg)
+![Intro to React Header](../blog/img/react-intro/blog-imgs_react.png)
 
 React JS is a JavaScript library for creating User Interfaces. It was created at Facebook and is very popular as most jobs for frontend development require knowledge of [React](https://reactjs.org).
 
@@ -1025,7 +1039,7 @@ export default LottieAnim;
 
 ### Mock API
 
-using [Mirage JS](https://miragejs.com/) to mock APIs is a way for frontend developers to create prototypes that feel close to the real thing. It helps to understand how the project is structured.
+Using [Mirage JS](https://miragejs.com/) to mock APIs is a way for frontend developers to create prototypes that feel close to the real thing. It helps to understand how the project is structured.
 
 ```jsx
 import React, { useState, useEffect } from "react";
