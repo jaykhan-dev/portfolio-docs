@@ -4,7 +4,9 @@ title: ShayBeas Enterprises
 
 # ShayBeas Enterprises
 
-[React Remake](https://shaybeas.netlify.app):
+Proof-of-concept made with React and Mirage JS as a Mock API.
+
+[Go to prototype](https://shaybeas.netlify.app):
 
 ![Shaybeas website](./img/shaybeas/shaybeas-hero.png)
 

@@ -531,6 +531,8 @@ The `useEffect` hook allows you to fetch data, update the dom, animate elements 
 Basic syntax:
 `useEffect(<function>, <dependency>)`
 
+#### useRef
+
 #### Custom Hook
 
 The following code is a condensed way of fetching data from an API. It uses the built in `fetch` function which converts the raw JSON and applies it to `setData` state. Finally it returns the data so that it can be used in another component where we only need to supply a URL.
@@ -789,6 +791,8 @@ module.exports = {
 ```bash
 npm run dev
 ```
+
+### Authentication
 
 ### Animation
 

@@ -8,6 +8,7 @@ tags: [vue-js, vue, netlify, web-design]
 ## Design prototype
 
 [Landing Page](https://appreci.netlify.app)
+[Official Store](https://appreci.io)
 
 ## Overview
 
