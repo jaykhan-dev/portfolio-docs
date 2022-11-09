@@ -21,9 +21,9 @@ authors: jay
 
 ![Intro to React Header](../blog/img/react-intro/blog-imgs_react.png)
 
-React JS is a JavaScript library for creating User Interfaces. It was created at Facebook and is very popular as most jobs for frontend development require knowledge of [React](https://reactjs.org).
+[React](https://reactjs.org) JS is a JavaScript library for creating User Interfaces. It was created at Facebook and is very popular as most jobs for frontend development require knowledge of React.
 
-This blog will briefly go through all the major and must know concepts for using React. Mastering the basics will give you a solid foundation on which to build well made user interfaces that are a joy to use.
+This blog will briefly go through all the major concepts for using React. Mastering the basics will give you a solid foundation on which to build well made user interfaces that are a joy to use.
 
 <!-- truncate -->
 
@@ -110,6 +110,14 @@ root.render(withoutJSX);
 :::info
 `class` is a [reserved](https://www.w3schools.com/js/js_reserved.asp) word in JavaScript so `className` is used instead.
 :::
+
+Expressions in `JSX`
+
+```jsx
+const anExpression = (
+  <h1>You can add numbers together in JSX, like 4 x 4 is {4 * 4}.</h1>
+);
+```
 
 ### Components
 
@@ -321,6 +329,41 @@ root.render(<Garage />)
 ### Forms
 
 Modern apps will require some kind of input from the user. This is where forms come in. In order to use forms, we need to use the `useState` hook to get an initial state and then use a `handleChange` arrow function to show changes to the state.
+
+#### Query
+
+The following code has a simple input field where you can type your name. When you click `Submit Query` an alert pops up with the name that you used.
+
+```jsx
+import { useState } from "react";
+import ReactDOM from "react-dom/client";
+
+function MyForm() {
+  const [name, setname] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(`Your name is: ${name}`);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Enter your name:
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </label>
+      <input type="submit" />
+    </form>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<MyForm />);
+```
 
 #### Select
 

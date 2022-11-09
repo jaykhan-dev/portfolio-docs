@@ -17,6 +17,10 @@ JavaScript being a loosely typed language means that it can be difficult to dete
 Typescript uses compile time type checking (before running the code).
 :::
 
+:::info
+ES2015 is supported by most modern browsers which means you can specify it as a target when downleveling (converting code to older versions)
+:::
+
 ### Typescript Compiler
 
 In order to use Typescript, you must first install it into your `node` app.
@@ -45,6 +49,16 @@ If you are using React or Vue, you can initialize a project using `vite` and sel
 npm init vite@latest
 ```
 
+### Strictness
+
+By adding strictness to a codebase, it enables strong type checking or loose depending on your preference. Using `"strict": true` in the `tsconfig.json` file will toggle all type-checking strictness flags but it's also possible to use certain ones. The two most important are:
+
+1. `noImplicitAny`
+   This will flag issues on any variables which have the `any` type. The section "Special Types" will go into more detail.
+
+2. `strictNullChecks`
+   This flag makes handling `null` and `undefined` more explicit. This is important because forgetting to handle these can save a lot of time and money!
+
 ### Simple Types
 
 There are three main primitives in both JavaScript and Typescript.
@@ -69,6 +83,23 @@ As you can see, the explicit nature of this variable makes it straightforward an
 ```ts
 let myName: string = "Jay";
 ```
+
+Another example:
+
+```ts
+function greet(person: string, date: Date) {
+  console.log(`Hello ${person}, today is ${date.toDateString()}`);
+}
+```
+
+:::tip
+it's best not to add annotations when the type system would end up inferring
+the same type anyway.
+:::
+
+:::info
+Type annotations never change the runtime behaviour of your program
+:::
 
 #### Implicit type
 
@@ -96,6 +127,14 @@ use lower case values for primities like `boolean` instead of `Boolean`.
 
 #### Type: `any`
 
+The `any` type disables type checking and allows for any type to be used.
+
+```ts
+let v: any = true;
+v = "string"; // no error
+Math.round(v); // no error
+```
+
 #### Type: `unknown`
 
 #### Type: `never`
@@ -111,6 +150,79 @@ use lower case values for primities like `boolean` instead of `Boolean`.
 ### Enums
 
 ### Aliases & Interfaces
+
+It is possible to define types separately from variables. This allows types to be shared between different objects/variables.
+
+#### Aliases
+
+An alias allow defining types with a custom name.
+
+Consider this example:
+
+```ts
+type CompYear = number;
+type CompType = string;
+type CompModel = string;
+type Comp = {
+  year: CompYear;
+  type: CompType;
+  model: CompModel;
+};
+
+const compYear: CompYear = 2020;
+const compType: CompType = "Mac Mini";
+const compModel: CompModel = "Apple M1";
+const comp: Comp = {
+  year: compYear,
+  type: compType,
+  model: compModel,
+};
+
+console.log(comp);
+```
+
+#### Interface
+
+Similar to aliases but only for `object` types.
+
+```ts
+interface Reactangle {
+  height: number;
+  width: number;
+}
+
+const rect: Rectangle = {
+  height: 20,
+  width: 10,
+};
+
+console.log(rect);
+```
+
+#### Extending an interface
+
+:::tip
+**Extending** means creating a new interface with the same properties but with additional or new attributes.
+:::
+
+```ts
+interface Rect {
+  height: number;
+  widht: number;
+}
+
+interface ColouredRect extends Rect {
+  colour: string;
+}
+
+const rectangle: ColouredRect = {
+  height: 20,
+  width: 10,
+  colour: "blue",
+};
+
+console.log(rectangle);
+```
 
 ### Union Types
 
