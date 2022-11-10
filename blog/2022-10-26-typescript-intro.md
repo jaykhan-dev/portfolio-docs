@@ -143,6 +143,11 @@ Math.round(v); // no error
 
 ### Arrays
 
+```ts
+const instruments: string[] = [];
+instruments.push("Moog synth");
+```
+
 ### Tuples
 
 ### Object Types
