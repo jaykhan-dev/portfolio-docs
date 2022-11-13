@@ -36,11 +36,11 @@ const sidebars = {
       type: "category",
       label: "Graphics",
       items: [
-        "graphics/logos",
+        "graphics/social-media",
         "graphics/posters",
         "graphics/marketing",
+        "graphics/logos",
         "graphics/motion-graphics",
-        "graphics/social-media",
       ],
     },
     "design-philosophy",

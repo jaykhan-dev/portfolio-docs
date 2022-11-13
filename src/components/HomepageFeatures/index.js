@@ -1,6 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import styles from "./styles.module.css";
+import { Link } from "react-router-dom";
 
 const FeatureList = [
   {
@@ -10,6 +11,8 @@ const FeatureList = [
       <>
         Using JavaScript libraries and frameworks like React, Vue, GSAP, Axios,
         Three JS etc.
+        <br />
+        <Link to="/docs/web-dev/appreci">See Projects</Link>
       </>
     ),
   },
@@ -17,7 +20,11 @@ const FeatureList = [
     title: "Graphic designer",
     Svg: require("../../../static/img/gd-blue.svg").default,
     description: (
-      <>For marketing, design, digital assets, visual storytelling etc.</>
+      <>
+        For marketing, design, digital assets, visual storytelling etc.
+        <br />
+        <Link to="/docs/graphics/social-media">See projects</Link>
+      </>
     ),
   },
   {

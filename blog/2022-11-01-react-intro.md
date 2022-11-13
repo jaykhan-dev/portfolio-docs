@@ -31,6 +31,96 @@ This blog will briefly go through all the major concepts for using React. Master
 
 React works by creating a virtual DOM in memory which can then be manipulated. These changes in state are then rendered onto the page.
 
+### Basic web concepts
+
+#### Compiling
+
+Compiling is the process of taking code in one language and outputting it in another language or a different version of the same language. This happens during the development stage (while editing code) and also at the build step prior to the production stage.
+
+A browser needs code to be compiled in order to understand it.
+
+#### Minifying
+
+Developers write code so that they are able to understand it. However, this formatting is not necessary for the browser to run it. Elements such as comments, spaces, indents and multiple lines are removed and minified code looks like a giant blob of text. The functionality still remains but the file sizes are smaller which means better app performance.
+
+#### Bundling
+
+Bundling resolves the web of dependencies that usually accompany a typical application with its many modules, functions, components, 3rd party packages and so on. It does this my merging/packaging the files into optimized bundles for the browser. The goal is to reduce the number of requests for files when a user visits a web page.
+
+Popular JavaScript bundlers
+
+1. Webpack
+2. esbuild
+3. parcel
+4. rollup
+5. browserify
+
+#### Code Splitting
+
+By splitting the application's bundle into smaller chuncks required by each **entry point**(unique URLS), the initial load times are improved because only the required code is loaded for that page. This process is known as Code Splitting.
+
+#### Build Time cs Runtime
+
+**Build Time** is the series of steps that prepare your app's code for production. Modern platforms like Netlify and Vercel will handle this step when you deploy your code to a connected git repo.
+
+The following command is used that enables the process to begin:
+
+```bash
+npm run build
+```
+
+Optimizing code for production is critical otherwise the UX will suffer. Files that are optimized include:
+
+- HTML files for statically generated pages
+- JavaScript code for rendering pages on the server
+- JavaScript code for making pages interactive on the client side
+
+After your app has been deployed and a user sends a request, that is referred to as **Runtime**.
+
+#### Client and Server
+
+The **client** is the browser that the user is on to interact with your application. Through this interface, requests are then sent to the backend server which returns a response to the browser.
+
+The **server** is where your application code lives, which is usually some data center in a remote location. AWS, Google and other large corporations have immense facilities that host data.
+
+#### Rendering
+
+Rendering converts your React code into the HTML representation of your UI.
+
+There are three main rendering methods. If you wish to use all of these in React, please see the `Next JS` section.
+
+1. Server-Side Rendering
+
+Where HTML of each page is generated on a server for **each** request. The generated HTML, JSON and JavaScript is then sent to the client.
+
+**Hydration** is the process of making the page interactive (with JavaScript) after it has loaded the HTML.
+
+2. Static Site Generation
+
+Content is generated once at build time and the HTML is stored in a CDN which is re-used for each request. In other words, the HTML is generated on the server but there is no server request at runtime.
+
+3. Client-Side Rendering
+
+React is primarily a library to build User Interfaces on the client side. When the browser receives an empty HTML shell from the server along with the JavaScript to construct the UI, the process is all done on the **client-side**.
+
+:::info
+Pre-rendering covers both Server-Side and Static Site
+:::
+
+#### CDNs and the Edge
+
+:::info
+The **Origin** server refers to the main server where the application code lives.
+:::
+
+A CDN stores static content like HTML and image files in multiple locations around the world. This content is placed between the client and the origin server so that when a request is made, the CDN closes to the client returns the response. This make content delivery much faster resulting in a better UX.
+
+The Edge is similar to a CDN but instead of just storing static content, the Edge network can run code (caching and code execution) closer to the user. This means that less code is sent to the client and part of the users request doesn't need to go all the way to the origin server.
+
+:::info
+**Imperative** programming tells a computer _how_ it should do something whereas **declarative** programming describes _what_ needs to be rendered (in Reacts case).
+:::
+
 ### CDN
 
 If you wish to use the CDN links instead of creating a basic installation, use these. This blog however will focus on creating a full `react` app using the methods described below.
@@ -574,7 +664,26 @@ The `useEffect` hook allows you to fetch data, update the dom, animate elements 
 Basic syntax:
 `useEffect(<function>, <dependency>)`
 
+#### useContext
+
+This hook allows you to manage state globally. This is important if you have a lot of components and you need to pass props to each one (aka Prop drilling).
+
+First import it, and then initialize it.
+
+```jsx
+import { useState, createContext } from "react";
+import ReactDOM from "react-dom/client";
+
+const UserContext = createContext();
+```
+
 #### useRef
+
+#### useReducer
+
+#### useCallback
+
+#### useMemo
 
 #### Custom Hook
 
@@ -697,9 +806,11 @@ this only works of the function has only one statement
 
 #### Destructuring
 
-Destructuring makes it easy to extract only what is needed from an array or object.
+Destructuring makes it easy to extract only what is needed from an array or object and assign the values to another variable.
 
 Destructuring an array that returns an array. This is quite common in React.
+
+1. Example 1
 
 ```js
 function calculate(a, b) {
@@ -714,7 +825,20 @@ function calculate(a, b) {
 const [add, subtract, multiply, divide] = calculate(4, 7);
 ```
 
-Destructuring an object that is deeply nested
+2. Example 2
+
+```js
+// with destructuring
+const objects = ["mac mini", "bow and arrows", "jackson guitar"];
+const [computer, hobby, instrument] = objects;
+
+// without destructuring
+const computer = objects[0];
+const hobby = objects[1];
+const instrument = objects[2];
+```
+
+3. Destructuring an object that is deeply nested
 
 ```js
 const vehicleOne = {
@@ -737,6 +861,26 @@ function myVehicle({ model, registration: { state } }) {
 }
 ```
 
+4. In React
+
+```jsx
+// with destructuring
+function Fruit({ apple }) {
+  return <div>This is an {apple}</div>;
+}
+
+// with destructuring
+function Fruit(props) {
+  const { apple, iphone, car } = props;
+  return <div>This is an {apple}</div>;
+}
+
+// without destructuring
+function Fruit(props) {
+  return <div>This is an {props.apple}</div>;
+}
+```
+
 #### Spread Operator
 
 the `...` operator allows you to copy all or part of an existing array/object into another array/object.
@@ -750,7 +894,25 @@ const arrayCombined = [...arrayOne, ...arrayTwo];
 console.log(arrayCombined);
 ```
 
-#### Array mapping
+Example in a React component:
+
+```jsx
+import { useState } from "react";
+
+export default function App() {
+  const [person, setperson] = useState({
+    id: "",
+    name: "",
+    age: "",
+  });
+
+  setPerson([...person, { id: 1, name: "Steve", age: "25" }]);
+}
+```
+
+When expanding your app with more complexity, the spread operator helps handle data more efficiently.
+
+#### Array Mapping
 
 One of the most useful array methods is the `.map()` method. It can be used to generate lists in React and it allows you to run a function on each item in the array, returning a new one as the result.
 
@@ -763,6 +925,8 @@ const myList = myArray.map((item) => <p>{item}</p>);
 
 ReactDOM.render(myList, document.getElementbyId("root"));
 ```
+
+There are other array methods like `filter`, `reduce`, `sort`, `includes`, `find`, `forEach`, `splice`, `concat`, `push`, `pop`, `shift`, `unshift` and so on.
 
 #### Ternary Operator
 
@@ -786,6 +950,103 @@ With:
 authentication ? renderApp() : renderLogin();
 ```
 
+#### Template Literals
+
+Using the backtick (`) allows you to use mutli-line strings, string interpolation which can have embedded JavaScript expressions and special constructs called tagged templates.
+
+```js
+conosle.log(`string text line 1
+string text line 2`);
+```
+
+#### Promises
+
+Promises are used to handle asynchronous operations in future implementations.
+
+Promises have 3 states:
+
+1. Pending - final result yet to be determined
+2. Resolved - Success!
+3. Rejected - Failure
+
+Using `.then()`, or `.catch()` is common when using promises. Below is a code snippet which uses a promise.
+
+```js
+let promise = new Promise((resolve, reject) => {
+  const i = "Promise";
+  i === "Promise" ? resolve() : reject();
+});
+
+promise
+  .then(() => {
+    console.log("Promise resolved!");
+  })
+  .catch(() => {
+    console.log("Promise rejected!");
+  });
+```
+
+#### Fetch API
+
+React comes with the Fetch API built in (as opposed to Axios which needs to be installed). It only takes one argument, the URL of the api you wish to use. See below for a basic example.
+
+```js
+fetch("https://example.com/music.json")
+  .then((res) => res.json())
+  .then((data) => setData(data));
+```
+
+#### Async/Await
+
+Often times it's not feasible to process data one at a time, but instead it must be done asynchronously. This enables a better developer and user experience.
+
+Consider the following code:
+
+```js
+async function asyncFunction() {
+  let promise = new Promise((resolve) => {
+    resolve();
+  });
+  let response = await promise;
+  return console.log(response);
+}
+```
+
+:::info
+`await` can only be used inside a `async` function.
+:::
+
+#### Modules
+
+Since React is component-based, it is important to understand what a module is and how to import/export them.
+
+A common way of exporting a component is as follows:
+
+```jsx
+function Component() {
+  return <div>This is a component</div>;
+}
+export default Component;
+```
+
+OR
+
+```jsx
+export default function Component() {
+  return <div>This is a component</div>;
+}
+```
+
+Importing them into another component is also super simple:
+
+```jsx
+import Component from "./component";
+
+function App() {
+  return <Component />;
+}
+```
+
 #### `this` keyword
 
 In Javascript `this` refers to an object.
@@ -798,8 +1059,6 @@ In Javascript `this` refers to an object.
 | In a function, in strict mode, this is undefined.                      |
 | In an event, this refers to the element that received the event.       |
 | Methods like call(), apply(), and bind() can refer this to any object. |
-
-#### Modules
 
 ### Tailwind CSS
 
@@ -1265,3 +1524,115 @@ The important attributes to know are `aria-label`, and `aria-required`. These he
 
 1. [ESLint Plugin JSX](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y)
 2. [Axe Core](https://github.com/dequelabs/axe-core)
+
+### React Native
+
+Building mobile apps is made easier with React Native.
+
+Basic setup:
+
+```bash
+npx create-expo-app ProjectName
+cd ProjectName
+npm start
+```
+
+Download the [Expo Go](https://expo.dev/client) app onto your mobile device, create an account and then scan the QR code to view the app. Making changes to your code will automatically update on your mobile!
+
+Below is a basic code snippet that shows a line of text on the screen.
+
+```jsx
+import React from "react";
+import { Text, View } from "react-native";
+
+const App = () => {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Not all those who wander are lost</Text>
+    </View>
+  );
+};
+
+export default App;
+```
+
+#### Core Components
+
+| React Native UI Component    | Web Analog              | Description                                                                                           |
+| ---------------------------- | ----------------------- | ----------------------------------------------------------------------------------------------------- |
+| `<View> </View>`             | `<div> </div>`          | A container that supports layout with flexbox, style, some touch handling, and accessibility controls |
+| `<Text> </Text>`             | `<p> </p>`              | Displays, styles, and nests strings of text and even handles touch events                             |
+| `<Image />`                  | `<img />`               | Displays different types of images                                                                    |
+| `<ScrollView> </ScrollView>` | `<div> </div>`          | A generic scrolling container that can contain multiple components and views                          |
+| `<TextInput />`              | `<input type="text" />` | Allows the user to enter text                                                                         |
+
+Below is a code snippet with an `Image` and `TextInput`:
+
+```jsx
+import React from "react";
+import { View, Text, Image, ScrollView, TextInput } from "react-native";
+
+const App = () => {
+  return (
+    <ScrollView>
+      <Text>React Native</Text>
+      <View>
+        <Text>Text inside a 'View'</Text>
+        <Image
+          source={{ uri: "https://reactnative.dev/docs/assets/p_cat2.png" }}
+          style={{ width: 200, height: 200 }}
+        />
+      </View>
+      <TextInput
+        style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
+        defaultValue="Type here!"
+      />
+    </ScrollView>
+  );
+};
+
+export default App;
+```
+
+You should see this:
+
+![React Native Core](./img/react-intro/react-native-core.png)
+
+### Next JS
+
+[Next JS](https://nextjs.org) is a React framework that optimizes and structures your app for a better developer and user experience. A basic `react` app provides a foundational toolset to build user interfaces but it still requires quite a bit of setup to make it production ready, meaning scalability, SEO optimization, accessibility, performance and so on.
+
+#### Installation
+
+```bash
+npx create-next-app@latest
+```
+
+```jsx
+import { useState } from "react";
+function Header({ title }) {
+  return <h1>{title ? title : "Default Title"}</h1>;
+}
+
+export default function HomePage() {
+  const name = ["Ada Lovelace", "Grace Hopper", "Margaret Hamilton"];
+  const [likes, setLikes] = useState(0);
+
+  function handleClick() {
+    setLikes(likes + 1);
+  }
+
+  return (
+    <div>
+      <Header title="Develop. Build. Relase" />
+      <ul>
+        {names.map((name) => (
+          <li key={name}>{name}</li>
+        ))}
+      </ul>
+
+      <button onClick={handleClick}>Like ({likes})</button>
+    </div>
+  );
+}
+```
