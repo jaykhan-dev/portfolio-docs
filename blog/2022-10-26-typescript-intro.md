@@ -129,6 +129,10 @@ use lower case values for primities like `boolean` instead of `Boolean`.
 
 The `any` type disables type checking and allows for any type to be used.
 
+:::tip
+Since Typescript won't be able to use type checking, it is not recommended to use `any`. It is mainly if you deliberately want to bypass type safety.
+:::
+
 ```ts
 let v: any = true;
 v = "string"; // no error
@@ -137,15 +141,99 @@ Math.round(v); // no error
 
 #### Type: `unknown`
 
+`unknown` is similar to `any` but it is a safer alternative. Typescript will prevent `unknown` types to be used.
+
+```ts
+let value: unknown;
+
+value = true; //OK
+value = 42; //ok
+value = "Hello World"; //ok
+value = []; //ok
+value = {}; //ok
+value = Math.random; //ok
+value = null; //ok
+value = undefined; //ok
+value = new TypeError(); //ok
+value = Symbol("type"); //ok
+```
+
+As you can see, all values are considered type-correct.
+
+However, trying to assign a variable of type `unknown` to other variables of other types will not work as the code snippet below indicates:
+
+```ts
+let value: unknown;
+
+let value1: unknown = value; //ok
+let value2: any = value; //ok
+let value3: boolean = value; //Error
+let value4: number = value; //Error
+let value5: string = value; //Error
+let value6: object = value; //Error
+let value7: any[] = value; //Error
+let value8: Function = value; //Error
+```
+
+Notice how the only values which can be assigned are the `any` and `unknown`.
+
+Typescript won't let us perform arbitrary operations on values of type `unknown`. We must perfom some sort of type checking first to narrow the type of value we're working with.
+
+```ts
+let value: unknown;
+
+value.foo.bar; // Error
+value.trim(); // Error
+value(); //Error
+new value(); // Error
+value[0][1]; // Error
+```
+
+:::tip
+Use `unknown` if you don't know what type of data is being used.
+:::
+
 #### Type: `never`
 
+```ts
+let x: never = true;
+```
+
 #### Type: `undefined` & `null`
+
+`undefined` and `null` refer to the JavaScript primitives of the same name. These don't have much use unless you add `strictNullChecks` in the `tsconfig.json` file.
+
+```ts
+let y: undefined = undefined;
+let z: null = null;
+```
 
 ### Arrays
 
 ```ts
 const instruments: string[] = [];
-instruments.push("Moog synth");
+instruments.push("Moog synth"); // OK
+instruments.push(3); // Error
+```
+
+#### Readonly
+
+`readonly` will prevent any changes from being made to the array.
+
+```ts
+const names: readonly string[] = ["Jay"];
+names.push("Khan"); // Error
+```
+
+#### Type inference
+
+Typescript can infer what type of array it is based on its values.
+
+```ts
+const numbers = [1, 2, 3];
+numbers.push(4); // OK
+numbers.push("5"); // Error
+let head: number = numbers[0]; // OK
 ```
 
 ### Tuples
