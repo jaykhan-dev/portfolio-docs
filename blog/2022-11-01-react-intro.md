@@ -1094,6 +1094,38 @@ module.exports = {
 npm run dev
 ```
 
+#### Flowbite
+
+A library of pre-built Tailwind Components that work well with React or Next.
+
+To install it, use this:
+
+```bash
+npm i flowbite flowbite-react
+```
+
+In the `tailwind.config.js` file, add the following lines:
+
+```js title="tailwind.config.js"
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    // highlight-start
+    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
+    //highlight-end
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [
+    // hight_start
+    require('flowbite/plugin')
+    // highlight_end
+  ],
+};
+```
+
 ### Authentication
 
 ### Animation

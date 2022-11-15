@@ -4,9 +4,15 @@ title: ShayBeas Enterprises
 
 # ShayBeas Enterprises
 
-Proof-of-concept made with React and Mirage JS as a Mock API.
+## Next JS version
 
-[Go to prototype](https://shaybeas.netlify.app):
+The following app is built with [Next JS](https://nextjs.org) and Tailwind CSS.
+
+[See New Prototype](https://next-shaybeas.vercel.app)
+
+#### Old Version made with Webflow
+
+[Old Version](https://shaybeas.netlify.app):
 
 ![Shaybeas website](./img/shaybeas/shaybeas-hero.png)
 
