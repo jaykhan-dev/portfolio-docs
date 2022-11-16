@@ -10,6 +10,12 @@ tags: [social media, design, graphics]
 
 [Lighthouse Labs](https://www.lighthouselabs.com)
 
+#### About
+
+#### My role
+
+#### Posts
+
 ## Rampart
 
 #### About the company
