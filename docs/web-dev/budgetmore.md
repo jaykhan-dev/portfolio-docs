@@ -55,6 +55,8 @@ The user flow is about uploading sample data to play around with. It requires th
 
 ## Backend
 
+The backend was made by [Joseph Mawer](https://www.linkedin.com/in/joseph-mawer-062a677b/).
+
 The user is taken to the backend which is being written in [C#](<https://en.wikipedia.org/wiki/C_Sharp_(programming_language)>) and [Mudblazor](https://mudblazor.com/) on the [.NET](https://dotnet.microsoft.com/en-us/) platform from Microsoft. In the screen shot below we change to the **Import** page.
 
 ![Budgetmore Import page](./img/budgetmore/import-page.png)

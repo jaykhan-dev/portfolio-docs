@@ -9,8 +9,8 @@ const FeatureList = [
     Svg: require("../../../static/img/frontend-blue.svg").default,
     description: (
       <>
-        Using JavaScript libraries and frameworks like React, Vue, GSAP, Axios,
-        Three JS etc.
+        Using JavaScript libraries and frameworks like React, NextJS, Vue, GSAP,
+        Axios, Tailwind CSS, Three JS etc.
         <br />
         <Link to="/docs/web-dev/shaybeas-enterprises">See Projects</Link>
       </>
@@ -21,7 +21,8 @@ const FeatureList = [
     Svg: require("../../../static/img/gd-blue.svg").default,
     description: (
       <>
-        For marketing, design, digital assets, visual storytelling etc.
+        Designing websites, marketing material, digital assets, visual
+        storytelling etc.
         <br />
         <Link to="/docs/graphics/social-media">See projects</Link>
       </>
