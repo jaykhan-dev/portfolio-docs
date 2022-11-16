@@ -1,26 +1,43 @@
 ---
 title: ShayBeas Enterprises
+slug: shaybeas-enterprises
+tags:
+  [
+    next-js,
+    react,
+    react-js,
+    javascript,
+    tailwindcss,
+    real-estate,
+    florida,
+    marketing,
+    landing-page,
+    zapier,
+  ]
 ---
 
 # ShayBeas Enterprises
 
+![Shaybeas new version](./img/shaybeas/next-shaybeas-hero.png)
+
 ## Overview
 
-- Designed the landing/marketing site
-- Created a new UX flow and UI patterns using design tools
+- Designed the landing/marketing site for a client in Florida in the Real Estate industry
+- Created a new UX flow and UI patterns using design tools and Next JS
 - Worked closely with stakeholders, marketing team, and developers
 - Conducted usablity testing for responsiveness, site speed and SEO
 
 #### Process
 
 1. Determine the layout by creating a wireframe on paper or Figma
-2. Create Layout using NEXT JS
-3. Hydrate by adding interactivity
-4. Test with Jest
+2. Create Layout using NEXT JS, Tailwind CSS
+3. Add interactivity and animation
+4. Add database if necessary
+5. Test with Jest
 
 ## New Version
 
-Made with NextJS and Tailwind CSS.
+Made with NextJS and Tailwind CSS. This is a prototype that is setup so that connecting to external APIs or adding functionality like search is possible.
 
 [See New Prototype](https://next-shaybeas.vercel.app)
 
@@ -34,31 +51,16 @@ Made with NextJS and Tailwind CSS.
 - Server Side Rendering - for fetching data
 - API Routes - if you want to build an API
 
-By using a UI Library, it saves me time to work on improving the UX like adding animations and more functionality.
-
-Popular libraries include:
-
-- TailwindUI
-- Flowbite
-- Tailwind Elements
-- Tailblocks
-
-#### Old Version
-
-Made with Webflow
-
-[Old Version](https://shaybeas.netlify.app):
+## Old Version
 
 ![Shaybeas website](./img/shaybeas/shaybeas-hero.png)
 
 [See design](https://shaybeas.webflow.io)
+
+This version is the original design I made with Webflow. I have since stopped using Webflow because it is limited in its free plan. Considering I planned on making many websites and apps, this would easily add up to hundreds if not thousands of dollars. Besides I'm much more interested in writing code anyways.
 
 ## Company details
 
 Shaybeas Enterprises is a real estate company in Florida, USA. They specialize in taking leads and turning them into clients. Their unique business model involves using a CRM to build relationships with home sellers and buyers.
 
 The client requested a Star Trek themed design. The inspiration was from [First Contact](https://www.imdb.com/title/tt0117731/)
-
-## Zapier
-
-[Zapier](https://zapier.com/) is a cool application that allows you to automate mundane tasks like setting up email alerts. In this case, the client used Zapier to populate the CRM that he was using. The first step was to collect the data in order to make business decisions, which were to pitch to a lead or referral based on their current needs.
