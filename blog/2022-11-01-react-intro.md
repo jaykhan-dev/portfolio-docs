@@ -679,6 +679,50 @@ const UserContext = createContext();
 
 #### useRef
 
+`useRef` has several uses which include:
+
+- Allows you to persist values between renders
+- Store a mutable value that does no cause a re-render when updated
+- Access a DOM element directly
+
+It only returns one item, an object called `current`. When you initialize `useRef`, set the initial value to `useRef(0)`
+
+```js
+const count = { current: 0 };
+```
+
+and then we can access the count with `count.current`.
+
+Example with input:
+
+```jsx
+import { useState, useEffect, useRef } from "react";
+import ReactDOM from "react-dom/client";
+
+function App() {
+  const [inputValue, setInputValue] = useState("");
+  const count = useRef(0);
+
+  useEffect(() => {
+    count.current = count.current + 1;
+  });
+
+  return (
+    <>
+      <input
+        type="text"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+      <h1>Render Count: {count.current}</h1>
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+```
+
 #### useReducer
 
 #### useCallback
@@ -1668,3 +1712,46 @@ export default function HomePage() {
   );
 }
 ```
+
+#### Axios
+
+Axios is one way of fetching data in JavaScript applications.
+
+First install it with:
+
+```bash
+npm i axios
+```
+
+Then make a new file in the `page` folder called `bitcoin.js` and add the following code to get the price from the Coinlore API.
+
+```jsx
+import Axios from "axios";
+
+export const getStaticProps = async () => {
+  const res = await Axios.get("https://api.coinlore.net/api/ticker/?id=90");
+  return {
+    props: { data: res.data },
+  };
+};
+
+const Bitcoin = (props) => {
+  const btcprice = props.data;
+
+  return (
+    <>
+      <p>BTC PRICE</p>
+
+      {btcprice?.map((price) => {
+        <div key={price.id}>
+          <h1>{price.price_usd}</h1>
+        </div>;
+      })}
+    </>
+  );
+};
+
+export default Bitcoin;
+```
+
+No go to `http://localhost:3000/bitcoin` to see the price.

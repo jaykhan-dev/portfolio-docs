@@ -27,6 +27,12 @@ tags:
 - Worked closely with stakeholders, marketing team, and developers
 - Conducted usablity testing for responsiveness, site speed and SEO
 
+## New Version
+
+Made with NextJS and Tailwind CSS. This is a prototype that is setup so that connecting to external APIs or adding functionality like search is possible.
+
+[See New Prototype](https://next-shaybeas.vercel.app)
+
 #### Process
 
 1. Determine the layout by creating a wireframe on paper or Figma
@@ -35,15 +41,9 @@ tags:
 4. Add database if necessary
 5. Test with Jest
 
-## New Version
-
-Made with NextJS and Tailwind CSS. This is a prototype that is setup so that connecting to external APIs or adding functionality like search is possible.
-
-[See New Prototype](https://next-shaybeas.vercel.app)
-
 #### Why NextJS?
 
-- Modern technology with a huge developer base
+- Modern technology with a huge developer base. Keeping up-to-date with the latest in front-end developement.
 - SEO optimization built in and customizable
 - Powerful features and libraries that make development faster like GSAP for animation
 - Easy hosting (Vercel, Netlify)
