@@ -664,6 +664,35 @@ The `useEffect` hook allows you to fetch data, update the dom, animate elements 
 Basic syntax:
 `useEffect(<function>, <dependency>)`
 
+Below is a common example of fetching data with `useEffect` using `axios`.
+
+```jsx
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+export default function App() {
+  const [data, setData] = useState({ hits: [] });
+
+  useEffect(async () => {
+    const result = await axios(
+      "https://hn.algolia.com/api/v1/search?query=redux"
+    );
+
+    setData(result.data);
+  }, []);
+
+  return (
+    <ul>
+      {data.hits.map((item) => (
+        <li key={item.objectID}>
+          <a href={item.url}>{item.url}</a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+```
+
 #### useContext
 
 This hook allows you to manage state globally. This is important if you have a lot of components and you need to pass props to each one (aka Prop drilling).

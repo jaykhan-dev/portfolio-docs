@@ -18,7 +18,7 @@ tags:
 
 # ShayBeas Enterprises
 
-![Shaybeas new version](./img/shaybeas/next-shaybeas-hero.png)
+![Shaybeas new version](./img/shaybeas/shaybeas-hero2.png)
 
 ## Overview
 
