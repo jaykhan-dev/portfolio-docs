@@ -1782,5 +1782,3 @@ const Bitcoin = (props) => {
 
 export default Bitcoin;
 ```
-
-No go to `http://localhost:3000/bitcoin` to see the price.
