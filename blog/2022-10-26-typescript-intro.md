@@ -1,6 +1,6 @@
 ---
-title: Typescript Intro
-slug: typsescript-intro
+title: Typescript
+slug: typsescript
 tags: [typescript, javascript, superset]
 authors: jay
 ---
