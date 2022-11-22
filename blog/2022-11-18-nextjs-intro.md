@@ -198,7 +198,7 @@ const Bitcoin = (props) => {
 export default Bitcoin;
 ```
 
-### React Query + Typescript
+### React Query
 
 React Query is for managing server-side state. It removes a lot of boilerplate code associated with state management.
 
@@ -289,5 +289,131 @@ export async function getStaticProps() {
   };
 }
 ```
+
+### The NextJS 13 Way
+
+The new experimental feature which is in Beta, is the `app` folder.
+
+This code snippet fetches a Todos list from an API called JsonPlaceholder.  It's a great way to learn how to build on some foundational knowledge.
+
+We need to define what type of data we need to fetch first.  Use this as a guide.
+
+```ts title="/typings.d.ts"
+export type Todo = {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+};
+```
+
+Add the following code that uses async functions to fetch data and display the results.
+
+```tsx title="/app/todos/TodosList.tsx"
+import React from "react"
+import Link from "next/link"
+import { Todo } from "../../typings"
+
+const fetchTodos = async () => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos/")
+  const todos = Todo[] = await res.json()
+  return todos
+}
+
+async function TodosList() {
+  const todos = await fetchTodos()
+
+  return (
+    <>
+      {todos.map((todo) => (
+        <p key={todo.id}>
+          <Link href={`/todos/${todo.id}`}>Todo: {todo.id}</Link>
+        </p>
+      ))}
+    </>
+  )
+}
+
+export default TodosList
+```
+
+and for the individual todo items:
+
+```tsx title="/app/todos/[todoId]/page.tsx"
+import React from "react"
+import { Todo } from "../../typings"
+import { notFound } from "next/navigation"
+
+export const dynamicParams = true
+
+type PageProps = {
+  params: {
+    todoId: string
+  }
+}
+
+const fetchTodo = async (todoId: string) => {
+  const res = await fetch(
+    `https://jsonplaceholder.typicode.com/todos/${todoId}`,
+    { next: { revalidate: 60 } }
+  )
+
+  const todo: Todo = await res.json()
+  return todo
+}
+
+async function TodoPage({ params: { todoId }}: PageProps) {
+  const todo = await fetchTodo(todoId)
+
+  if (!todo.id) return notFound()
+
+  return (
+    <div>
+      <p>
+        #{todo.id}: {todo.title}
+      </p>
+      <p>Completed: {todo.compeleted ? "Yes" : "No"}</p>
+      {/* @ts-ignore */}
+      <p>By User: {todo.userId}</p>
+    </div>
+  )
+}
+
+export default TodoPage
+
+export async function generateStaticParams() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos/")
+  const todos: Todo[] = await res.json()
+
+  const trimmedTodos = todos.splice(0, 10)
+
+  return trimmedTodos.map((todo) => ({
+    todoId: todo.id.toString()
+  }))
+}
+```
+
+### Layouts
+
+```tsx
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <main className="flex space-x-4 divide-x-2 p-5">
+      <div>
+        <h1>Search</h1>
+      </div>
+      <div className="flex-1 pl-5">
+        {children}
+      </div>
+    </main>
+  )
+}
+```
+
+### Search
 
 ### Framer Motion
