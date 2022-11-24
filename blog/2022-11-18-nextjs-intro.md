@@ -294,9 +294,9 @@ export async function getStaticProps() {
 
 The new experimental feature which is in Beta, is the `app` folder.
 
-This code snippet fetches a Todos list from an API called JsonPlaceholder.  It's a great way to learn how to build on some foundational knowledge.
+This code snippet fetches a Todos list from an API called JsonPlaceholder. It's a great way to learn how to build on some foundational knowledge.
 
-We need to define what type of data we need to fetch first.  Use this as a guide.
+We need to define what type of data we need to fetch first. Use this as a guide.
 
 ```ts title="/typings.d.ts"
 export type Todo = {
@@ -340,32 +340,32 @@ export default TodosList
 and for the individual todo items:
 
 ```tsx title="/app/todos/[todoId]/page.tsx"
-import React from "react"
-import { Todo } from "../../typings"
-import { notFound } from "next/navigation"
+import React from "react";
+import { Todo } from "../../typings";
+import { notFound } from "next/navigation";
 
-export const dynamicParams = true
+export const dynamicParams = true;
 
 type PageProps = {
   params: {
-    todoId: string
-  }
-}
+    todoId: string;
+  };
+};
 
 const fetchTodo = async (todoId: string) => {
   const res = await fetch(
     `https://jsonplaceholder.typicode.com/todos/${todoId}`,
     { next: { revalidate: 60 } }
-  )
+  );
 
-  const todo: Todo = await res.json()
-  return todo
-}
+  const todo: Todo = await res.json();
+  return todo;
+};
 
-async function TodoPage({ params: { todoId }}: PageProps) {
-  const todo = await fetchTodo(todoId)
+async function TodoPage({ params: { todoId } }: PageProps) {
+  const todo = await fetchTodo(todoId);
 
-  if (!todo.id) return notFound()
+  if (!todo.id) return notFound();
 
   return (
     <div>
@@ -376,20 +376,20 @@ async function TodoPage({ params: { todoId }}: PageProps) {
       {/* @ts-ignore */}
       <p>By User: {todo.userId}</p>
     </div>
-  )
+  );
 }
 
-export default TodoPage
+export default TodoPage;
 
 export async function generateStaticParams() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/todos/")
-  const todos: Todo[] = await res.json()
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos/");
+  const todos: Todo[] = await res.json();
 
-  const trimmedTodos = todos.splice(0, 10)
+  const trimmedTodos = todos.splice(0, 10);
 
   return trimmedTodos.map((todo) => ({
-    todoId: todo.id.toString()
-  }))
+    todoId: todo.id.toString(),
+  }));
 }
 ```
 
@@ -399,21 +399,21 @@ export async function generateStaticParams() {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <main className="flex space-x-4 divide-x-2 p-5">
       <div>
         <h1>Search</h1>
       </div>
-      <div className="flex-1 pl-5">
-        {children}
-      </div>
+      <div className="flex-1 pl-5">{children}</div>
     </main>
-  )
+  );
 }
 ```
 
 ### Search
 
 ### Framer Motion
+
+### Storybook

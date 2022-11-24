@@ -1195,73 +1195,53 @@ export default App;
 
 [Three JS](https://threejs.org) is a popular JavaScript library that allows you to create 3D graphics.
 
-First install it with:
+We will be using the `react-three/fiber` package because it simplifies the code. First install it with:
 
 ```bash
-npm i three
+npm install three @react-three/fiber @react-three/drei
 ```
 
-The following code will create a cube and rotate it. There is no interaction since most of the features are not enabled but this is a good start to adding 3D objects into any React app.
+This code creates two boxes and when you hover, it turns pink, and if you click the boxes scale up.
 
 ```jsx
-/* eslint-disable space-before-function-paren */
-/* eslint-disable lines-between-class-members */
-import React, { Component } from "react";
-import * as THREE from "three";
-class ThreeScene extends Component {
-  componentDidMount() {
-    const width = this.mount.clientWidth;
-    const height = this.mount.clientHeight;
-    // ADD SCENE
-    this.scene = new THREE.Scene();
-    // ADD CAMERA
-    this.camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-    this.camera.position.z = 4;
-    // ADD RENDERER
-    this.renderer = new THREE.WebGLRenderer({ antialias: true });
-    this.renderer.setClearColor("#000000");
-    this.renderer.setSize(width, height);
-    this.mount.appendChild(this.renderer.domElement);
-    // ADD CUBE
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshBasicMaterial({ color: "#433F81" });
-    this.cube = new THREE.Mesh(geometry, material);
-    this.scene.add(this.cube);
-    this.start();
-  }
-  componentWillUnmount() {
-    this.stop();
-    this.mount.removeChild(this.renderer.domElement);
-  }
-  start = () => {
-    if (!this.frameId) {
-      this.frameId = requestAnimationFrame(this.animate);
-    }
-  };
-  stop = () => {
-    cancelAnimationFrame(this.frameId);
-  };
-  animate = () => {
-    this.cube.rotation.x += 0.01;
-    this.cube.rotation.y += 0.01;
-    this.renderScene();
-    this.frameId = window.requestAnimationFrame(this.animate);
-  };
-  renderScene = () => {
-    this.renderer.render(this.scene, this.camera);
-  };
-  render() {
-    return (
-      <div
-        style={{ width: "400px", height: "400px" }}
-        ref={(mount) => {
-          this.mount = mount;
-        }}
-      />
-    );
-  }
+import { useRef, useState } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+
+function Box(props) {
+  const ref = useRef();
+  const [hovered, hover] = useState(false);
+  const [clicked, click] = useState(false);
+
+  useFrame((state, delta) => (ref.current.rotation.x += delta));
+
+  return (
+    <mesh
+      {...props}
+      ref={ref}
+      scale={clicked ? 1.5 : 1}
+      onClick={(event) => click(!click)}
+      onPointerOver={(event) => hover(true)}
+      onPointerOut={(event) => hover(false)}
+    >
+      <boxGeometry args={[1, 1, 1]} />
+      <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
+    </mesh>
+  );
 }
-export default ThreeScene;
+
+export default function Cubes() {
+  return (
+    <Canvas>
+      <ambientLight intensity={0.5} />
+      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
+      <pointLight position={[-10, -10, -10]} />
+      <Box position={[-1.2, 0, 0]} />
+      <Box position={[1.2, 0, 0]} />
+      <OrbitControls />
+    </Canvas>
+  );
+}
 ```
 
 #### Spline
@@ -1487,29 +1467,6 @@ test("it shows existing reminders", async () => {
   expect(screen.getByText("Walk the dog")).toBeInTheDocument();
   expect(screen.getByText("Take out the trash")).toBeInTheDocument();
   expect(screen.getByText("Work out")).toBeInTheDocument();
-});
-```
-
-#### Test 2
-
-```js
-test("it can add a reminder to a list", async () => {
-  let list = server.create("list");
-
-  visit(`/${list.id}?open`);
-  await waitForElementToBeRemoved(() => screen.getByText("Loading..."));
-
-  userEvent.click(screen.getByTestId("add-reminder"));
-  await userEvent.type(screen.getByTestId("new-reminder-text"), "Work out");
-  userEvent.click(screen.getByTestId("save-new-reminder"));
-
-  await waitForElementToBeRemoved(() =>
-    screen.getByTestId("new-reminder-text")
-  );
-
-  expect(screen.getByText("Work out")).toBeInTheDocument();
-  expect(server.db.reminders.length).toEqual(1);
-  expect(server.db.reminders[0].listId).toEqual(list.id);
 });
 ```
 
