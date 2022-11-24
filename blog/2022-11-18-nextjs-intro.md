@@ -414,6 +414,222 @@ export default function RootLayout({
 
 ### Search
 
+```tsx
+import { useState, useEffect } from "react";
+
+const defaultEndpoint = "https://rickandmortyapi.com/api/character/";
+
+export async function getServerSideProps() {
+  const res = await fetch(defaultEndpoint);
+  const data = await res.json();
+  return {
+    props: {
+      data,
+    },
+  };
+}
+
+export default function Home({ data }) {
+  console.log("data", data);
+  const { info, results: defaultResults = [] } = data;
+  const [results, updateResults] = useState(defaultResults);
+  const [page, updatePage] = useState({
+    ...info,
+    current: defaultEndpoint,
+  });
+  const { current } = page;
+
+  useEffect(() => {
+    if (current === defaultEndpoint) return;
+
+    async function request() {
+      const res = await fetch(current);
+      const nextData = await res.json();
+
+      updatePage({
+        current,
+        ...nextData.info,
+      });
+
+      if (!nextData.info?.prev) {
+        updateResults(nextData.results);
+        return;
+      }
+
+      updateResults((prev) => {
+        return [...prev, ...nextData.results];
+      });
+    }
+
+    request();
+  }, [current]);
+
+  function handleLoadMore() {
+    updatePage((prev) => {
+      return {
+        ...prev,
+        current: page?.next,
+      };
+    });
+  }
+
+  function handleOnSubmitSearch(e) {
+    e.preventDefault();
+
+    const { currentTarget = {} } = e;
+    const fields = Array.from(currentTarget?.elements);
+    const fieldQuery = fields.find((field) => field.name === "query");
+
+    const value = fieldQuery.value || "";
+    const endpoint = `https://rickandmortyapi.com/api/character/?name=${value}`;
+
+    updatePage({
+      current: endpoint,
+    });
+  }
+
+  return (
+    <form
+      className="flex items-center space-x-2"
+      onSubmit={handleOnSubmitSearch}
+    >
+      <input
+        name="query"
+        type="search"
+        className="p-4 border rounded bg-gray-800 text-white"
+        placeholder="search..."
+      />
+      <button className="border p-4 px-4 bg-blue-600 text-white hover:bg-slate-800 duration-300 rounded">
+        Search
+      </button>
+    </form>
+  );
+}
+```
+
 ### Framer Motion
 
+```bash
+npm i framer-motion
+```
+
+```tsx
+import "../styles/globals.css";
+import React from "react";
+import type { AppProps } from "next/app";
+import Nav from "../components/nav";
+import { motion, AnimatePresence } from "framer-motion";
+import Footer from "../components/footer";
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial="pageInitial"
+        animate="pageAnimate"
+        exit="pageExit"
+        variants={{
+          pageInitial: {
+            opacity: 0,
+          },
+          pageAnimate: {
+            opacity: 1,
+          },
+          pageExit: {
+            opacity: 0,
+          },
+        }}
+      >
+        <Nav />
+        <Component {...pageProps} />
+        <Footer />
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+```
+
+#### Scrolling
+
+```tsx
+import { motion, useScroll, useTransform } from "framer-motion";
+
+let { scrollYProgress } = useScroll();
+let y = useTransform(scrollYProgress, [0, 1], ["-10%", "-50%"]);
+```
+
+#### While Hover
+
+```tsx
+<motion.li
+  whileHover={{
+    position: "relative",
+    zIndex: 1,
+    scale: [1, 2, 1.2],
+    rotate: [0, 20, -10, 0],
+    filter: {
+      "hue-rotate(0) contrast(100%)",
+      "hue-rotate(360deg) contrast(200%)",
+      "hue-rotate(45deg) contrast(300%)",
+      "hue-rotate(0) contrast(100%)",
+    },
+    transition: {
+      duration: 0.2
+    }
+  }}
+```
+
 ### Storybook
+
+In you NextJS project run this code to get started with Storybook.
+
+```bash
+npx sb init --builder webpack5
+```
+
+Create a new file called `home.stories.tsx` in the `/stories/pages/` folder
+
+```tsx title="/stories/pages/home.stories.tsx"
+import Home from "../../pages/index";
+
+export default {
+  title: "Pages/Home",
+  component: Home,
+};
+
+export const HomePage = () => <Home />;
+```
+
+I've been experiencing some issues with NextJS 13 but it should work fine with NextJS 12.
+
+In the `.storybook/preview.ts` file, import the `globals.css` file.
+
+```tsx
+import "../styles/globals.css";
+```
+
+and finally we need to de-optimize the Images with the following 2 steps:
+
+1. change the `package.json` file `"scripts"` to:
+
+```json title="package.json"
+"scripts": {
+    "storybook": "start-storybook -p 6006 -s ./public",
+    "build-storybook": "build-storybook -s public"
+}
+```
+
+2. add this code snippet to the `preview.js` file in `.storybook`.
+
+```tsx title=".storybook/preview.js"
+import * as NextImage from "next/image";
+
+const OriginalNextImage = NextImage.default;
+
+Object.defineProperty(NextImage, "default", {
+  configurable: true,
+  value: (props) => <OriginalNextImage {...props} unoptimized />,
+});
+```
+
+The component should now look the same in your storybook as it does on the browser.
