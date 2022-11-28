@@ -2,19 +2,19 @@
 
 ## Summary
 
-Frontend developer with a strong visual design background. I focus on building user interfaces that are responsive, accessible and performant by using modern frameworks like Next JS and Tailwind CSS. Development is a long-term commitment in which continuous learning is the key to success.
+Frontend developer with a strong visual design background. I focus on building user interfaces that are responsive, accessible and performant by using modern frameworks like Next JS and Tailwind CSS. I see web development as a long-term commitment.
 
 ## Work Experience
 
-### Freelancer (Front-end)
+### Freelancer (Present)
 
-#### Web design/development
+#### Frontend Development
 
 _Freelance | Ottawa, ON | May 2021 - Present_
 
-- Using React and Vue to build responsive, performant user interfaces
-- Helping clients increase engagement by improving the UX
-- Testing for accessibility, responsivenes, performance
+- Helping clients modernize their UI with React/Next and UI libraries
+- Testing for accessibility, user experience, responsiveness
+- Working closely with marketing teams, developers and stakeholders
 
 ### Lighthouse Labs
 
@@ -22,9 +22,9 @@ _Freelance | Ottawa, ON | May 2021 - Present_
 
 _Temporary | Remote | August 2022 - October 2022_
 
-- Designed digital assets using Adobe CC for advertisements, social media, email campaigns and increased engagement
-- Designed webpages using Figma to redesign pre-existing pages
-- Provided graphic design support to manage workload
+- Creating graphic design assets for social media and email campaign
+- Creating mockups and wireframes in Figma for web pages
+- Supporting the Art Director with creating marketing collateral
 
 ### Keywords Studios
 
@@ -44,8 +44,9 @@ _On Call | Montreal, QC | Jan 2020 - Aug 2021_
 _Full time | Montreal, QC | Sep 2018 - Nov 2019_
 
 - Conducted user research, created user task flows and persona maps
-- Designed wireframes and prototypes for new services with Illustrator
+- Designed wireframes and prototypes for new services
 - Edited educational videos content with over 500,000 views on Youtube
+- Working closely with developers, graphic designers and marketing team
 
 ### CMHC/Xerox
 
@@ -63,8 +64,8 @@ _Contract | Ottawa, ON | Feb 2018 - Aug 2018_
 _Full time | Ottawa, ON | Apr 2017 - Oct 2017_
 
 - Created content for social media, web and print which increased engagement
-- Entered data into the Shopify platform on a daily basis
-- Tested the usability of the site and suggested UX
+- Working closely with the marketing, team, developers and graphic designers
+- Tested the usability of the site and suggested UX improvements
 
 ### In Air Marketing
 
@@ -72,8 +73,10 @@ _Full time | Ottawa, ON | Apr 2017 - Oct 2017_
 
 _Freelance | Ottawa, ON | Aug 2016 - Apr 2017_
 
-- Created digital assets and for over 500 small businesses in various industries
-- Worked remotely and independently to complete tasks
+- Created video, web content for over 500 small businesses in various industries
+- Designed new UI patterns, UX flows with design tools for wireframing
+- Conducted UX research, usability testing to improve the client UX
+- Worked with marketing teams, graphic designers and project managers
 
 ### Print Three
 
@@ -82,7 +85,9 @@ _Freelance | Ottawa, ON | Aug 2016 - Apr 2017_
 _On Call | Ottawa, ON | Dec 2015 - Jun 2016_
 
 - Designed graphics for local clients based on existing templates or brand new ones
-- Advised existing clients on improving their web user experience
+- Worked closely with other graphic designers and marketing teams
+- Created design systems, UI patterns, and explain design decisions to stakeholders
+- Conducted usability testing and UX research to improve client web experience
 
 ### The Community Network
 
@@ -90,8 +95,9 @@ _On Call | Ottawa, ON | Dec 2015 - Jun 2016_
 
 _Full Time | Ottawa, ON | Mar 2014 - Jun 2015_
 
-- Created digital assets and branding material for over 500 businesses in Canada
-- Worked in a team and also independently to complete tasks
+- Created video content and branding material for over 500 businesses in Canada
+- Worked closely with graphic designers, and marketing teams
+- Explained design decisions to project managers and stakeholders
 
 ## Education
 
@@ -110,19 +116,6 @@ September 2007 - April 2012
 _Interactive Multimedia and Design_
 
 September 2007 - April 2011
-
-## Software
-
-- HTML/CSS
-- JavaScript
-- React
-- Next JS
-- Vue JS
-- Git
-- Jest
-- PostgreSQL
-- Tailwind CSS
-- Adobe Creative Suite
 
 ## Languages
 

@@ -668,6 +668,8 @@ root.render(<App />);
 
 #### useMemo
 
+#### useContext
+
 #### Custom Hook
 
 The following code is a condensed way of fetching data from an API. It uses the built in `fetch` function which converts the raw JSON and applies it to `setData` state. Finally it returns the data so that it can be used in another component where we only need to supply a URL.

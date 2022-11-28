@@ -633,3 +633,266 @@ Object.defineProperty(NextImage, "default", {
 ```
 
 The component should now look the same in your storybook as it does on the browser.
+
+#### Deploying to Chromatic
+
+Install Chromatic:
+
+```bash
+npm install chromatic --save-dev
+```
+
+```bash
+npm run build-storybook
+```
+
+Run the server locally to see what's up
+
+```bash
+npx http-server ./storybook-test
+```
+
+Deploy:
+
+```bash
+npx chromatic --project-token=<your-project-token>
+```
+
+### React Three Fiber
+
+```bash
+npm i three @react-three/fiber @react-three/drei
+```
+
+This code snippet will load a Ledger hardware wallet GLTF in the browser which cais interactive.
+
+```tsx
+/* eslint-disable react/no-unknown-property */
+import { useLoader } from "@react-three/fiber";
+import { Suspense } from "react";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import { motion } from "framer-motion";
+
+const Ledger = () => {
+  const gltf = useLoader(GLTFLoader, "../ledger.gltf");
+  return (
+    <>
+      <primitive object={gltf.scene} scale={8} position={[0, 0, 0]} />
+    </>
+  );
+};
+
+export default function LedgerScene() {
+  return (
+    <motion.div
+      className="h-96"
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: {
+          opacity: 0,
+        },
+        visible: {
+          opacity: 1,
+          transition: {
+            delay: 0.5,
+          },
+        },
+      }}
+    >
+      <Canvas camera={{ fov: 75, near: 0.1, far: 1000, position: [-2, 5, -5] }}>
+        <Suspense fallback={null}>
+          <ambientLight intensity={1} />
+          <directionalLight position={[1, 1, 5]} castShadow />
+          <Ledger />
+          <OrbitControls enableZoom={false} />
+        </Suspense>
+      </Canvas>
+    </motion.div>
+  );
+}
+```
+
+The 3d object in the bottom of this image is the output. To see the live version you can visit this [link](https://nozomi-digital.vercel.app/hardware/wallets)
+
+![Ledger Nano 3d](./img/next-intro/ledger-3d.png)
+
+#### Theatre JS
+
+### Playwright
+
+Playwright is a end-to-end testing library that supports multiple browsers and operating systems.
+
+In order to get started with Playwright, you need a project that is already set up. Run the following command to get started:
+
+```bash
+npm init playwright@latest
+```
+
+#### Running a test
+
+In order to run a test, use this command:
+
+```bash
+npx playwright test
+```
+
+This will run in the background and the output will let you know if the tests passed or not. If they did not pass, the logs will identify where the problem occured.
+
+To see a report in the browser:
+
+```bash
+npx playwright show-report
+```
+
+#### Assertions
+
+The `expect` library for test assertions provides helpful matchers like:
+
+- `toEqual`
+- `toContain`
+- `toMatch`
+- `toBe`
+
+Sample test:
+
+```tsx
+import { test, expect } from "@playwright/test";
+
+test("SEO title is present", async ({ page }) => {
+  await page.goto("http://localhost:3000");
+  await expect(page).toHaveTitle(/Title/);
+});
+```
+
+#### Locators
+
+Locators is how you find element(s) on a page where you can then use actions like `.click`, and `.fill`.
+
+#### Test isolation
+
+#### Test hooks
+
+#### Generate tests with Codegen
+
+### Zustand
+
+Install it with:
+
+```bash
+# npm
+npm i zustand
+
+# yarn
+yarn add zustand
+```
+
+In the `lib` folder, create a file called `store.ts` and add this code which basically counts the number of bears which increase with each button press. This can be found on their [website](https://zustand-demo.pmnd.rs/)
+
+#### Counter store
+
+```ts title="lib/store.ts"
+import create from "zustand";
+
+const useStore = create((set) => ({
+  count: 1,
+  inc: () => set((state) => ({ count: state.count + 1 })),
+}));
+
+function Controls() {
+  const inc = useStore((state) => sate.inc);
+  return <button onClick={inc}>one up</button>;
+}
+
+function Counter() {
+  const count = useStore((state) => state.count);
+  return <h1>{count}</h1>;
+}
+```
+
+#### Todo store:
+
+```js title="lib/store.js"
+import create from "zustand";
+
+const useStore = create((set) => ({
+  todos: [],
+  todo: "",
+  addTodo: (todo) => set((state) => ({ todos: [...state.todos, todo] })),
+  removeTodo: (index) =>
+    set((state) => ({ todos: state.todos.filter((_, i) => i !== index) })),
+}));
+
+export default useStore;
+```
+
+This UI uses `@nextui-org/react` which you can install with the following command:
+
+```bash
+npm install @nextui-org/react
+```
+
+```jsx
+import { Button, Input, Card } from "@nextui-org/react";
+import { useState } from "react";
+import useStore from "../lib/store";
+export default function Home() {
+  const [newtodo, setNewTodo] = useState("");
+
+  const todos = useStore((state) => state.todos);
+  const addTodo = useStore((state) => state.addTodo);
+  const removeTodo = useStore((state) => state.removeTodo);
+
+  // this function will check if the input is valid or not
+  const AddNewTodo = () => {
+    if (newtodo.length > 0) {
+      addTodo(newtodo);
+      setNewTodo("");
+    }
+  };
+
+  return (
+    <div className="container text-black mx-auto flex flex-col items-center p-28">
+      <div className="w-full">
+        <h1 className="text-3xl">Todo</h1>
+      </div>
+      <div className="mt-2 flex items-center w-full">
+        <Input
+          value={newtodo}
+          onChange={(e) => setNewTodo(e.target.value)}
+          fullWidth
+          placeholder="Enter TODO"
+          clearable
+        ></Input>
+        <Button onClick={AddNewTodo} shadow className="m-2">
+          ADD
+        </Button>
+      </div>
+
+      {todos.map((todo, index) => (
+        <div key={index} className="mt-5 w-full flex items-center">
+          <Card className="w-full">
+            <Card.Body>{todo}</Card.Body>
+          </Card>
+          <Button
+            onClick={() => removeTodo(index)}
+            size="lg"
+            shadow
+            auto
+            color="error"
+            className="m-2"
+          >
+            Delete
+          </Button>
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+you should see the following output:
+
+![Next Zustand Todo](./img/next-intro/next-zustand-todo.png)
