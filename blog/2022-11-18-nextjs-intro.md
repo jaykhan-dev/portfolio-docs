@@ -397,6 +397,37 @@ export async function generateStaticParams() {
 
 ### Layouts
 
+NextJS allows you to create layout components to make some components universal. Below are a few examples of how to do this.
+
+```tsx title="components/layout.jsx"
+import Navbar from "./navbar";
+import Footer from "./footer";
+
+export default function Layout({ children }) {
+  return (
+    <>
+      <Navbar />
+      <main>{children}</main>
+      <Footer />
+    </>
+  );
+}
+```
+
+which can then be imported into the `_app.js` file like so:
+
+```jsx title="pages/_app.js"
+import Layout from "../components/layout";
+
+export default function MyApp({ Component, pageProps }) {
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  );
+}
+```
+
 ```tsx
 export default function RootLayout({
   children,
@@ -902,3 +933,174 @@ you should see the following output:
 ### Next Auth
 
 ### Prisma
+
+Prisma is an ORM for JavaScript. It allows you to connect a SQL or NoSQL database and define models all in your Next app.
+
+Install it with:
+
+```bash
+npm i prisma --save-dev
+```
+
+Prisma client:
+
+```bash
+npm i @prisma/client
+```
+
+Invoke the Prisma CLI with:
+
+```bash
+npx prisma
+```
+
+and initialize the schema with:
+
+```bash
+npx prisma init
+```
+
+Once that is done, you must connect the database using the following format:
+
+```prisma title="prisma/schema.prisma"
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+```
+
+Create an `.env` file and put the following code and make sure to replace it with the values of your postgresql database connection.
+
+```bash
+postgresql://USER:PASSWORD@HOST:PORT/DATABASE?schema=SCHEMA
+```
+
+```bash
+DATABASE_URL="postgresql://johndoe:randompassword@localhost:5432/mydbname?schema=public"
+```
+
+The format is broken down like this:
+
+- `USER`: name of the database user
+- `PASSWORD`: the database password
+- `HOST`: the name of the host, usually `localhost`
+- `PORT`: usually `5432` with postgresql
+- `DATABASE`: the name of the database
+- `SCHEMA`: the name of the schema inside the database, in this case `public`
+
+#### Sample model
+
+```prisma
+model Post {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String   @db.VarChar(255)
+  content   String?
+  published Boolean  @default(false)
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  Int
+}
+
+model Profile {
+  id     Int     @id @default(autoincrement())
+  bio    String?
+  user   User    @relation(fields: [userId], references: [id])
+  userId Int     @unique
+}
+
+model User {
+  id      Int      @id @default(autoincrement())
+  email   String   @unique
+  name    String?
+  posts   Post[]
+  profile Profile?
+}
+```
+
+To migrate the schema, run this command:
+
+```bash
+npx prisma migrate dev --name init
+```
+
+#### Prisma Studio
+
+You can interact with the database with a browser GUI with:
+
+```bash
+npx prisma studio
+```
+
+### Component Libraries
+
+#### Next UI
+
+Install it with:
+
+```bash
+npm i @nextui-org/react
+```
+
+and import it in the `_app.tsx` file so that all the children components can use the functions and components that come with NextUI.
+
+```jsx
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import { NextUIProvider } from "@nextui-org/react";
+import Layout from "../components/layout";
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <NextUIProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </NextUIProvider>
+    </>
+  );
+}
+
+export default MyApp;
+```
+
+A simple example of a button is as follows:
+
+```jsx
+import { Button } from "@nextui-org/react";
+
+const Component = () => <Button>Click me</Button>;
+```
+
+Next UI uses Stitches for the CSS stylings like the snippet below:
+
+```jsx
+import React from "react";
+import { styled } from "@stitches/react";
+
+const ButtonStyle = styled("button", {
+  backgroundColor: "blue",
+  color: "white",
+  borderRadius: "9999px",
+  fontSize: "13px",
+  padding: "10px 15px",
+  "&:hover": {
+    backgroundColor: "LightGray",
+  },
+});
+
+export default function Component() {
+  return (
+    <div className="h-screen grid place-items-center">
+      <ButtonStyle>Button</ButtonStyle>
+    </div>
+  );
+}
+```
+
+#### DaisyUI
+
+#### Flowbite
+
+#### @HeadlessUI/react
