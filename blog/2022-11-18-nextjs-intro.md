@@ -157,7 +157,9 @@ export default function HomePage() {
 }
 ```
 
-### Axios
+### Data Fetching
+
+#### Axios
 
 Axios is one way of fetching data in JavaScript applications.
 
@@ -198,7 +200,7 @@ const Bitcoin = (props) => {
 export default Bitcoin;
 ```
 
-### React Query
+#### React Query
 
 React Query is for managing server-side state. It removes a lot of boilerplate code associated with state management.
 
@@ -290,7 +292,7 @@ export async function getStaticProps() {
 }
 ```
 
-### The NextJS 13 Way
+#### The NextJS 13 Way
 
 The new experimental feature which is in Beta, is the `app` folder.
 
@@ -896,3 +898,7 @@ export default function Home() {
 you should see the following output:
 
 ![Next Zustand Todo](./img/next-intro/next-zustand-todo.png)
+
+### Next Auth
+
+### Prisma

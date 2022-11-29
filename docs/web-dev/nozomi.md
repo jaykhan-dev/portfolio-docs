@@ -33,7 +33,28 @@ A Bitcoin economy is vastly different because most people would rather hold thei
 
 Nozomi focuses on the software side of the Bitcoin standard. This will include JavaScript and Python mainly because these are very well known and easier to learn.
 
-The end goal is a to build a **Bitcoin app store**.
+The goal is to create a community of developers who are aligned on one thing: Bitcoin.
+
+## Testing
+
+Being a frontend developer requires testing UIs for different scenarios. The following tests are for simple SEO checks.
+
+```tsx
+import { test, expect } from "@playwright/test";
+
+test("SEO title is present", async ({ page }) => {
+  await page.goto("http://localhost:3000");
+  await expect(page).toHaveTitle(/Nozomi Digital/);
+});
+```
+
+The result is:
+
+![Playwright test result](./img/nozomi/playwright-test-result.png)
+
+with the following report in the browser:
+
+![Playwright show report](./img/nozomi/playwright-show-report.png)
 
 ## Tech Stack
 

@@ -12,7 +12,7 @@ const FeatureList = [
         Using JavaScript libraries and frameworks like React, NextJS, Vue, GSAP,
         Axios, Tailwind CSS, Three JS etc.
         <br />
-        <Link to="/docs/web-dev/shaybeas-enterprises">See Projects</Link>
+        <Link to="/docs/web-dev/nozomi-digital">See Projects</Link>
       </>
     ),
   },
