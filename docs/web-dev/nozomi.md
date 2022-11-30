@@ -1,6 +1,6 @@
 ---
-title: Nozomi Digital
-slug: nozomi-digital
+title: Nozomi
+slug: nozomi
 tags: [bitcoin, lightning, p2p]
 ---
 
@@ -12,7 +12,7 @@ tags: [bitcoin, lightning, p2p]
 
 **Work in progress**
 
-Nozomi Digital is dedicated to building on Bitcoin. With the increased adoption of the Bitcoin Lightning network, I believe more people are seeing the value of using an open, permissionless and immutable blockchain.
+Nozomi is dedicated to building on Bitcoin. With the increased adoption of the Bitcoin Lightning network, I believe more people are seeing the value of using an open, permissionless and immutable blockchain.
 
 There are a few points to be made about the "crypto" and "blockchain" industries.
 
