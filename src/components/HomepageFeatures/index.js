@@ -9,8 +9,8 @@ const FeatureList = [
     Svg: require("../../../static/img/frontend-blue.svg").default,
     description: (
       <>
-        Using JavaScript libraries and frameworks like React, NextJS, Vue, GSAP,
-        Axios, Tailwind CSS, Three JS etc.
+        Using JavaScript libraries and frameworks like React, NextJS, Vue,
+        SvelteKit, Framer Motion, GSAP, Axios, Tailwind CSS, Three JS etc.
         <br />
         <Link to="/docs/web-dev/appreci">See Projects</Link>
       </>
