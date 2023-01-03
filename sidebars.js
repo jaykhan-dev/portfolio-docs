@@ -25,7 +25,7 @@ const sidebars = {
       type: "category",
       label: "Web Dev",
       items: [
-        "web-dev/melange",
+        "web-dev/plebeian-market",
         "web-dev/shaybeas",
         "web-dev/appreci",
         "web-dev/scribendi",

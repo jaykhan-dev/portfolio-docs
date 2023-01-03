@@ -21,19 +21,9 @@ tags:
 
 ![Sveltekit Header](./img/sveltekit-intro/sveltekit-blog-100.jpg)
 
-## Sveltekit
-
 [Sveltekit](https://kit.svelte.dev/) is a new web framework which simplifies creating user interfaces with a strong focus on performance, accessibility, and developer experience.
 
 <!-- truncate -->
-
-### Overview
-
-#### Folder structure
-
-#### Comparison to other frameworks
-
-#### Vite
 
 ### Installation
 
@@ -48,6 +38,45 @@ Add Tailwindcss
 ```bash
 npx svelte-add@latest tailwindcss
 ```
+
+### Overview
+
+#### Folder structure
+
+#### Comparison to other frameworks
+
+#### Vite
+
+### Reactivity
+
+### Props
+
+### Logic
+
+### Events
+
+#### Modifiers
+
+Below is a list of modifiers that can be used on events
+
+- `preventDefault`: for client-side form handling
+- `stopPropagation`: preventing the event reaching the next element
+- `passive`: improves scrolling preformance on touch/wheel events
+- `nonpassive`: explicity set `passive:false`
+- `capture`: fires the handler during the _capture_ phase instead of the _bubbling_ phase
+- `once`: remove the handler after the first time it runs
+- `self`: only trigger handler if `event.target` is the element itself
+- `trusted`: only trigger handler if `event.isTrusted` is `true` (i.e user action)
+
+It is possible to chain handlers like `on:click|once|capture={...}`
+
+### Bindings
+
+### Lifecycle
+
+### Stores
+
+### Animation
 
 ### Svelte-cubed
 
@@ -94,4 +123,16 @@ The result can be seen in the following image or [link](https://plebeian-market.
 
 ![Svelte-cubed Image](./img/sveltekit-intro/svelte-cubed.png)
 
-### Dark mode
+### Playwright
+
+### Tailwind CSS
+
+### GraphQL
+
+### Headless CMS
+
+#### Sanity
+
+#### Hygraph
+
+#### WordPress

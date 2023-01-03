@@ -12,8 +12,9 @@ Frontend developer with a strong visual design background. I focus on building u
 
 _Freelance | Ottawa, ON | May 2021 - Present_
 
-- Helping clients modernize their UI with React/Next and UI libraries
+- Helping clients modernize their UI with React/Next, Sveltekit and UI libraries
 - Testing for accessibility, user experience, responsiveness
+- Fixing UI/UX bugs using JavaScript testing libraries
 - Working closely with marketing teams, developers and stakeholders
 
 ### Lighthouse Labs
@@ -22,9 +23,9 @@ _Freelance | Ottawa, ON | May 2021 - Present_
 
 _Temporary | Remote | August 2022 - October 2022_
 
-- Creating graphic design assets for social media and email campaign
-- Creating mockups and wireframes in Figma for web pages
-- Supporting the Art Director with creating marketing collateral
+- Created graphic design assets for social media and email campaign for more engagement
+- Created mockups and wireframes in Figma for web pages to enhance the UX
+- Supported the Art Director to mitigate workload
 
 ### Keywords Studios
 

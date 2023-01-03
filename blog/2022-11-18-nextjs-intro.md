@@ -20,8 +20,6 @@ tags:
 
 ![Next header](../blog/img/next-intro/next-blog.png)
 
-## Next JS
-
 [Next JS](https://nextjs.org) is a React framework that optimizes and structures your app for a better developer and user experience. A basic `react` app provides a foundational toolset to build user interfaces but it still requires quite a bit of setup to make it production ready, meaning scalability, SEO optimization, accessibility, performance and so on.
 
 <!-- truncate -->
@@ -1111,4 +1109,4 @@ export default function Component() {
 
 ### GraphQL
 
-### Voltage
+#### Apollo Client/Server
