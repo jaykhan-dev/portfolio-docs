@@ -57,13 +57,18 @@ const config = {
           src: "img/jk-logo-blue.svg",
         },
         items: [
-          {
-            type: "doc",
-            docId: "tech-stack",
-            position: "left",
-            label: "Docs",
-          },
+          // {
+          //   type: "doc",
+          //   docId: "tech-stack",
+          //   position: "left",
+          //   label: "Docs",
+          // },
           { to: "/blog", label: "Blog", position: "left" },
+          {
+            href: "https://jaykhan.xyz",
+            label: "Home",
+            position: "right",
+          },
           {
             href: "https://www.linkedin.com/in/jkhanprofile",
             label: "LinkedIn",
